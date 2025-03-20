@@ -1,7 +1,55 @@
 .custom-size {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
+}
+body {
+  background: linear-gradient(to right, #fef9a4, #ffffff);
+
+
+}
+/* .full {
+  animation-name: image;
+  animation-timing-function: ease;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  
+}
+@keyframes image {
+  from {
+    transform: translateX(-200px);
   }
-  body{
-    background-color:lightblue;
+  to {
+    transform: translateX(0px);
   }
+} */
+.img-fluid {
+  animation-name: images;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  
+}
+@keyframes images {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.last {
+  animation-name: lasting;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  
+}
+@keyframes lasting {
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

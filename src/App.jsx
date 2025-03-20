@@ -50,24 +50,24 @@ const App = () => {
       case 'Rain': return rainy;
       case 'Clear': return sunny;
       case 'Clouds': return clouds;
-      default: return mist;
+      default: return sunny;
     }
   };
 
   return (
-    <div style={{fontFamily:"cursive"}} className="container rounded-3 d-flex flex-column align-items-center justify-content-center min-vh-100">
-      <div className="card p-4 shadow-lg w-100" style={{ maxWidth: '500px' }}>
+    <div style={{fontFamily:"cursive"}} className="full container rounded-3 d-flex flex-column align-items-center justify-content-center min-vh-100">
+      <div className="card p-4 shadow-lg w-100 " style={{ maxWidth: '500px',backgroundColor:'yellow' }}>
         <form onSubmit={getit} className="mb-3">
           <label className="form-label text-success">ENTER CITY NAME</label>
           <input value={city} onChange={handle} className="form-control" type="text" placeholder="Enter city..." />
         </form>
         {weatherData && (
           <div className="text-center">
-            <img src={getWeatherImage(weatherData.weather[0].main)} alt="weather" className="img-fluid" style={{ maxWidth: '100px' }} />
-            <h5 className="text-primary mt-2">{weatherData.name}, {weatherData.sys.country}</h5>
+            <img  src={getWeatherImage(weatherData.weather[0].main)} alt="weather" className="img-fluid" style={{ maxWidth: '100px' }} />
+            <h5 className="text-primary mt-2">{weatherData.name} <br /> <br /> {weatherData.sys.country}</h5>
             <p className="text-muted">{weatherData.weather[0].main}</p>
             <h3 className="fw-bold">{Math.round(weatherData.main.temp)}°C</h3>
-            <div className="row mt-3">
+            <div className="row mt-3 last">
               <div className="col-6 d-flex flex-column align-items-center">
                 <img src={windspeed} alt="wind speed" style={{ maxWidth: '50px' }} />
                 <p className="mt-1 mb-0 text-danger">Wind Speed</p>
