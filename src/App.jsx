@@ -57,89 +57,100 @@ const App = () => {
         return rainy;
       case 'Clear':
         return sunny;
-        case 'Clouds':
+      case 'Clouds':
         return clouds;
       default:
-        return mist; 
+        return sunny;
     }
   };
 
   return (
-    <div style={{ position: 'relative', height: '100vh' ,fontFamily:'cursive'}}>
-      
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: `url(${getWeatherImage(weatherData.weather[0].main)})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.5,
-          zIndex: -1
-        }}
-      />
-      
-      
-      <div className="container-fluid d-flex justify-content-center ">
-        <div className="row p-3 rounded-3">
-          {!weatherData && <p>Loading weather data for {submit}...</p>}
-          <div className="col-12">
-            <form action="#" method="get" onSubmit={getit}>
-              <div className="mb-3">
-                <label className="form-label text-success" htmlFor="cityname">
-                  ENTER CITY NAME
-                </label>
-                <input value={city} onChange={handle} className="form-control w-50" type="text" name="cityname" id="cityname" />
-              </div>
-            </form>
+    <div className='body' style={{ position: 'relative', height: '100vh', fontFamily: 'cursive' }}>
+  <div  className="container-fluid d-flex justify-content-center align-items-center pb-2">
+    <div style={{backgroundColor:'yellow',height:'680px'}} className="row p-3 rounded-3">
+      {!weatherData && <p style={{ fontSize: '14px' }}>Loading weather data for {submit}...</p>}
+      <div  className="col-12 text-center">
+        <form action="#" method="get" onSubmit={getit}>
+          <div className="mt-3">
+            <label className="city form-label text-success" htmlFor="cityname" style={{ fontSize: '14px' }}>
+              ENTER CITY NAME
+            </label>
+            <input
+              value={city}
+              onChange={handle}
+              className="city form-control w-50 mx-auto" 
+              type="text"
+              name="cityname"
+              id="cityname"
+              style={{ fontSize: '14px' }} 
+            />
+            <img
+            className='city'
+              src={getWeatherImage(weatherData.weather[0].main)}
+              alt={weatherData.weather[0].main}
+              style={{
+                width: '100px',
+                height: '100px',
+                marginTop: '20px',
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+            />
           </div>
-          <div className="row">
-            <div className="col-12">
-              {weatherData && (
-                <div className="text-center" style={{ fontFamily: 'cursive' }}>
-                  <p className="text-danger" style={{ fontFamily: 'cursive', fontSize: '22px' }}>
-                    City <br />
+        </form>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          {weatherData && (
+            <div className="text-center" style={{ fontFamily: 'cursive' }}>
+              <p className="city text-danger" style={{ fontSize: '16px' }}>
+                City <br />
+              </p>
+              <p style={{ fontSize: '18px' }}>{weatherData.name}</p>
+              <p className= "city text-danger" style={{ fontSize: '16px' }}>
+                Country <br />
+              </p>
+              <p style={{ fontSize: '18px' }}>{weatherData.sys.country}</p>
+              <div className="weather row d-flex mb-4">
+                <div className="col-6 text-start">
+                  <p className="text-danger" style={{ fontSize: '16px' }}>
+                    Weather<br />
                   </p>
-                  <p style={{ fontSize: '25px' }}> {weatherData.name}</p>
-                  <p className="text-danger" style={{ fontFamily: 'cursive', fontSize: '22px' }}>
-                    Country <br />
-                  </p>
-                  <p style={{ fontSize: '25px' }}> {weatherData.sys.country}</p>
-                  <div className="row d-flex">
-                    <div className="col-6 text-start">
-                      <p className="text-danger" style={{ fontFamily: 'cursive', fontSize: '22px' }}>
-                        Weather<br />
-                      </p>
-                      <p style={{ fontSize: '25px' }}> {weatherData.weather[0].main}</p>
-                    </div>
-                    <div className="col-6 text-end">
-                      <p style={{fontSize:'22px'}} className="text-danger">Temperature <br /></p>
-                      <p style={{ fontSize: '25px' }}>{Math.round(weatherData.main.temp)}°C</p>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-6 text-start">
-                      <img src={windspeed} alt="" className="custom-size" />
-                      <p style={{fontSize:"22px"}} className="mt-3 text-danger">Wind Speed <br /></p>
-                      <p style={{ fontSize: '25px' }}> {weatherData.wind.speed} km/h</p>
-                    </div>
-                    <div className="col-6 text-end">
-                      <img src={humidity} alt="" className="custom-size" />
-                      <p style={{fontSize:'22px'}} className="mt-3 text-danger">Humidity <br /></p>
-                      <p style={{ fontSize: '25px' }}>{weatherData.main.humidity}%</p>
-                    </div>
-                  </div>
+                  <p style={{ fontSize: '18px' }}> {weatherData.weather[0].main}</p>
                 </div>
-              )}
+                <div className="col-6 text-end">
+                  <p className="text-danger" style={{ fontSize: '16px' }}>
+                    Temperature <br />
+                  </p>
+                  <p style={{ fontSize: '18px' }}>{Math.round(weatherData.main.temp)}°C</p>
+                </div>
+              </div>
+
+              <div className="row two">
+                <div className="col-6 text-start">
+                  <img src={windspeed} alt="" className="custom-size" />
+                  <p className="mt-3 text-danger" style={{ fontSize: '16px' }}>
+                    Wind Speed <br />
+                  </p>
+                  <p style={{ fontSize: '18px' }}> {weatherData.wind.speed} km/h</p>
+                </div>
+                <div className="col-6 text-end">
+                  <img src={humidity} alt="" className="custom-size" />
+                  <p className="mt-3 text-danger" style={{ fontSize: '16px' }}>
+                    Humidity <br />
+                  </p>
+                  <p style={{ fontSize: '18px' }}>{weatherData.main.humidity}%</p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 

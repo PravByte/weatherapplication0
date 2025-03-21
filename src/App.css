@@ -2,3 +2,50 @@
     width: 100px;
     height: 100px;
   }
+  body {
+    background-color: white;
+  }
+  
+.weather{
+  animation-name: trans;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}  
+@keyframes trans{
+  from{
+    transform: translateX(-100px);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+.two{
+  animation-name: two;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}  
+@keyframes two{
+  from{
+    transform: translateY(-100px);
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+.city{
+  animation-name:final;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}  
+@keyframes final{
+  from{
+    transform: translateY(-100px);
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+
